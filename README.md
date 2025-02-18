@@ -17,7 +17,7 @@ Written with Streamlit
 
 ## Dependencies
 
-- python>=3.13
+- python>=3.12.9
 - streamlit (>=1.42.0,<2.0.0)
 - pandas (>=2.2.3,<3.0.0)
 - numpy (>=2.2.3,<3.0.0)
