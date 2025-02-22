@@ -155,6 +155,17 @@ def toexcel (Blocks):
 
     return BUFFER
 
+def saveexcel (OUTFILE, Blocks):
+    TABNAMES = sorted(np.unique(Blocks[:,0]))
+    WORKBOOKS = {tab: pd.DataFrame(list(Blocks[Blocks[:,0]==tab, 1])) for tab in TABNAMES}
+
+    writer = pd.ExcelWriter(OUTFILE, engine="openpyxl")
+    [WORKBOOKS[tab].to_excel(writer, sheet_name=tab[:31], index=False) for tab in TABNAMES]
+    writer.close()
+
+    # return BUFFER
+
+
 if __name__=="__main__":
     path = ["Kget_NOM5317_1.log", "Kget_NOM5317_2.log"]
     OUTFILE = "Kget_NOM5317.xlsx"

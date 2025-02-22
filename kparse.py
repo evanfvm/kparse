@@ -1,9 +1,12 @@
+#Streamlit app main file
+
 from pandas.core.generic import WriteExcelBuffer
+from pandas.core.internals.managers import Block
 import streamlit as st
 import pandas as pd
 import numpy as np
 import datetime
-from myfunc import split_block_frmstr, parse_block, toexcel
+from myfunc import split_block_frmstr, parse_block, toexcel, saveexcel
 
 with st.container():
     uploaded_files = st.file_uploader(
@@ -27,8 +30,10 @@ with st.container():
         my_bar.progress(60, text="Converting to excel ...")
 
         BUFFER = toexcel(Blocks)
+        # OUTFILE="Export.xlsx" if outfile == "" else f"{outfile}.xlsx"
+        # saveexcel(OUTFILE, Blocks)
 
-        my_bar.progress(100, text="Complete")
+        # my_bar.progress(100, text=f"Complete. Export file {OUTFILE} is saved.")
         my_bar.empty()
         st.success("Completed")
 
