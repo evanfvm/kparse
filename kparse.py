@@ -28,7 +28,7 @@ with st.container():
 
         my_bar.progress(10, text="Parsing MO data...")
         #parse block into dict of param: value, with MOCLass as first array column
-        Blocks = np.array([parse_block(block) for block in Blocks])
+        # Blocks = np.array([parse_block(block) for block in Blocks])
         # print (Blocks[0])
         # TABNAMES = sorted(np.unique(Blocks[:,0]))
         # WORKBOOKS = {tab: pd.DataFrame(list(Blocks[Blocks[:,0]==tab, 1])) for tab in TABNAMES}
@@ -37,7 +37,7 @@ with st.container():
         #     print (values)
         #     break
         # print (WORKBOOKS['VlanPort'])
-        my_bar.progress(60, text="Converting to excel ...")
+        # my_bar.progress(60, text="Converting to excel ...")
         # ggsheet = gsheet(st.secrets["gsheets"], gmail)
         # ggsheet.export(Blocks)
         # OUTFILE = "Export_" + datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
