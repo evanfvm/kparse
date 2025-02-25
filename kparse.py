@@ -22,9 +22,10 @@ with st.container():
     if export and uploaded_files is not None:
 
         my_bar = st.progress(0, text="Loading MO data...")
-        blocks = [split_block_frmstr(file.read().decode()) for file in uploaded_files]
+        for file in uploaded_files:
+            blocks = split_block_frmstr(file.read().decode())
         #array of all MO block (id, MO, block data)
-        Blocks = np.concatenate(blocks)
+        # Blocks = np.concatenate(blocks)
 
         my_bar.progress(10, text="Parsing MO data...")
         #parse block into dict of param: value, with MOCLass as first array column
