@@ -1,7 +1,5 @@
 #Streamlit app main file
 
-from pandas.core.generic import WriteExcelBuffer
-from pandas.core.internals.managers import Block
 import streamlit as st
 import pandas as pd
 import numpy as np

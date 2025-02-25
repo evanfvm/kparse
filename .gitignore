@@ -6,3 +6,4 @@ poetry.lock
 .DS_Store
 credentials.json
 .streamlit*
+pyproject.toml
