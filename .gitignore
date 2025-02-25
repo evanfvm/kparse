@@ -4,3 +4,5 @@
 *.xlsx
 poetry.lock
 .DS_Store
+credentials.json
+.streamlit*

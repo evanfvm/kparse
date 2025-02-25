@@ -25,6 +25,7 @@ def split_block(path:str)->NDArray:
     blocks = np.reshape(blocks, (len(blocks)//3,3))
     return blocks
 
+#return 2D numpy array, each row has 3 instances [[ProxyID, MO, RAWRowData],...]
 def split_block_frmstr(file:str)->NDArray:
     #regrex pattern
     pattern_block = r"=+\s+Proxy Id\s+(\d+)\s+MO\s+(.+)\s+=+\s+"
@@ -41,6 +42,7 @@ def split_block_frmstr(file:str)->NDArray:
     blocks = np.reshape(blocks, (len(blocks)//3,3))
     return blocks
 
+#return numpy array, one row has 2 instances [MOClass, DICT(RowData)]
 def parse_block(block:NDArray[Any])->NDArray:
     #regrex pattern
     pattern_nodeid = r"MeContext=(\w+)"
@@ -179,6 +181,8 @@ if __name__=="__main__":
 
     TABNAMES = sorted(np.unique(Blocks[:,0]))
     WORKBOOKS = {tab: pd.DataFrame(list(Blocks[Blocks[:,0]==tab, 1])) for tab in TABNAMES}
+
+
 
     writer = pd.ExcelWriter(OUTFILE, engine="openpyxl")
     [WORKBOOKS[tab].to_excel(writer, sheet_name=tab[:31], index=False) for tab in TABNAMES]
