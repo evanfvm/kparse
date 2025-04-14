@@ -25,10 +25,11 @@ with st.container():
         if BLOCKS is None:
             st.error("Incomplete log. Upload a different log!")
 
+        st.write (BLOCKS[0])
         # my_bar.progress(10, text="Parsing MO data...")
-        if BLOCKS is not None:
-            block = parse_block(BLOCKS[0])
-            st.write(block)
+        # if BLOCKS is not None:
+        #     block = parse_block(BLOCKS[0])
+        #     st.write(block)
         #parse block into dict of param: value, with MOCLass as first array column
         # Blocks = np.array([parse_block(block) for block in Blocks])
         # print (Blocks[0])

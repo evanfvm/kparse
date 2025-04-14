@@ -21,7 +21,7 @@ def split_block(file:str)->NDArray|None:
 
 
 #return numpy array, one row has 2 instances [MOClass, DICT(RowData)]
-def parse_block(block:NDArray)->Dict:
+def parse_block(block:NDArray)->dict:
     #regrex pattern
     pattern_nodeid = r"MeContext=(\w+)"
     pattern_param = r"^(\S+)(.+)"
