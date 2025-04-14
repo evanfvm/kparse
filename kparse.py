@@ -4,12 +4,13 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import datetime
-from myfunc import split_block, parse_block, toexcel, saveexcel
+from myfunc import parse_block, toexcel, saveexcel
+from mo import split_block
 from gsheet import gsheet
 import re
 
 with st.container():
-    uploaded_files = st.file_uploader(
+    file = st.file_uploader(
         "Upload the log file", accept_multiple_files=False, type="log"
     )
 
@@ -17,11 +18,10 @@ with st.container():
 
     export = st.button("Parse to gsheet",use_container_width=True)
 
-    if export and uploaded_files is not None:
+    if export and file is not None:
 
         my_bar = st.progress(0, text="Loading MO data...")
-        for file in uploaded_files:
-            blocks = split_block(file.read().decode())
+        blocks = split_block(file.read().decode())
         #array of all MO block (id, MO, block data)
         # Blocks = np.concatenate(blocks)
 
