@@ -4,8 +4,8 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import datetime
-from myfunc import parse_block, toexcel, saveexcel
-from mo import split_block
+# from myfunc import parse_block, toexcel, saveexcel
+from mo import split_block, parse_block
 from gsheet import gsheet
 import re
 
@@ -21,11 +21,14 @@ with st.container():
     if export and file is not None:
 
         my_bar = st.progress(0, text="Loading MO data...")
-        blocks = split_block(file.read().decode())
-        #array of all MO block (id, MO, block data)
-        # Blocks = np.concatenate(blocks)
+        BLOCKS = split_block(file.read().decode())
+        if BLOCKS is None:
+            st.error("Incomplete log. Upload a different log!")
 
-        my_bar.progress(10, text="Parsing MO data...")
+        # my_bar.progress(10, text="Parsing MO data...")
+        if BLOCKS is not None:
+            block = parse_block(BLOCKS[0])
+            st.write(block)
         #parse block into dict of param: value, with MOCLass as first array column
         # Blocks = np.array([parse_block(block) for block in Blocks])
         # print (Blocks[0])
