@@ -9,15 +9,13 @@ from gsheet import gsheet
 import re
 
 with st.container():
-
     uploaded_files = st.file_uploader(
-        "Upload log file(s)", accept_multiple_files=True, type="log"
+        "Upload the log file", accept_multiple_files=False, type="log"
     )
 
-    # outfile = st.text_input("outfile", value="", placeholder="Export File Name, eg. Export", label_visibility="collapsed")
     gmail = st.text_input("gmail", value="", placeholder="Your gmail | abc@gmail.com", label_visibility="collapsed")
 
-    export = st.button("Export",use_container_width=True)
+    export = st.button("Parse to gsheet",use_container_width=True)
 
     if export and uploaded_files is not None:
 
