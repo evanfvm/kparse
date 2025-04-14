@@ -71,10 +71,6 @@ class gsheet ():
         except HttpError as err:
             print (err)
 
-
-        # writer = pd.ExcelWriter(OUTFILE, engine="openpyxl")
-        # [WORKBOOKS[tab].to_excel(writer, sheet_name=tab[:31], index=False) for tab in TABNAMES]
-        # writer.close()
 if __name__ == "__main__":
     gc = gsheet(st.secrets['gsheets'])
     gc.del_workbook()
