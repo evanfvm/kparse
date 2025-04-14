@@ -4,7 +4,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import datetime
-from myfunc import split_block_frmstr, parse_block, toexcel, saveexcel
+from myfunc import split_block, parse_block, toexcel, saveexcel
 from gsheet import gsheet
 import re
 
@@ -23,7 +23,7 @@ with st.container():
 
         my_bar = st.progress(0, text="Loading MO data...")
         for file in uploaded_files:
-            blocks = split_block_frmstr(file.read().decode())
+            blocks = split_block(file.read().decode())
         #array of all MO block (id, MO, block data)
         # Blocks = np.concatenate(blocks)
 
